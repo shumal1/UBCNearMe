@@ -1,9 +1,6 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 public class Building {
@@ -12,14 +9,14 @@ public class Building {
     private String lon;
     private String name;
     private boolean accessible;
-    private List<IResource> resources;
+    private Set<IResource> resources;
 
     public Building(String hours, String lat, String lon, String name){
         this.hours = hours;
         this.lat = lat;
         this.lon = lon;
         this.name = name;
-        resources = new LinkedList<>();
+        resources = new HashSet<>();
     }
 
 
@@ -63,9 +60,22 @@ public class Building {
         return Collections.unmodifiableList(fountains) ;
     }
 
-    public List<IResource> resources(){
-        return Collections.unmodifiableList(resources);
+    public Set<IResource> resources(){
+        return Collections.unmodifiableSet(resources);
     }
 
+    public void addResource(IResource iResource){
+        resources.add(iResource);
+    }
+
+    public void clearResource(){
+        resources.clear();
+    }
+
+    public void setResource(Set<IResource> resources){
+        this.resources = resources;
+    }
+
+    
 
 }

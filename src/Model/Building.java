@@ -5,13 +5,13 @@ import java.util.*;
 
 public class Building {
     private String hours;
-    private String lat;
-    private String lon;
+    private double lat;
+    private double lon;
     private String name;
     private boolean accessible;
     private Set<IResource> resources;
 
-    public Building(String hours, String lat, String lon, String name){
+    public Building(String hours, double lat, double lon, String name){
         this.hours = hours;
         this.lat = lat;
         this.lon = lon;
@@ -32,11 +32,11 @@ public class Building {
         return name;
     }
 
-    public String getLat(){
+    public double getLat(){
         return lat;
     }
 
-    public String getLon(){
+    public double getLon(){
         return lon;
     }
 
@@ -76,6 +76,6 @@ public class Building {
         this.resources = resources;
     }
 
-    
+
 
 }

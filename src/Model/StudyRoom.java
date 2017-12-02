@@ -14,8 +14,8 @@ public class StudyRoom extends AbstractRoom {
         this.size = size;
     }
 
-    public void setAvailability(Boolean booked){
-        this.availability = booked;
+    public void setAvailability(Boolean available){
+        this.availability = available;
     }
 
     public Integer getSize (){

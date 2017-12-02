@@ -1,21 +1,22 @@
 package Model;
 
 public class WashRoom extends AbstractRoom {
-    private WRType wrType;
-    private String roomnum;
+    private WashroomType washroomType;
 
     public WashRoom(Building building, int floor, String roomNumber){
         super(building, floor);
-        wrType = null;
-        this.roomnum = roomNumber;
+        washroomType = null;
+        this.roomNumber = roomNumber;
 
     }
 
-    public void setWrType(WRType wrType){
-        this.wrType = wrType;
+    public void setWashroomType(WashroomType washroomType){
+        this.washroomType = washroomType;
     }
 
-    public WRType getWrType() {
-        return wrType;
+    public WashroomType getWashroomType() {
+        return washroomType;
     }
+
+
 }

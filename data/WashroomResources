@@ -1,0 +1,31 @@
+[
+  {
+    "RoomType": "WashRoom",
+    "Rooms": [
+      {
+        "Building": "ICICS",
+        "Floor": 2,
+        "RoomNumber": "201",
+        "Type": "Male"
+      },
+      {
+        "Building": "ICICS",
+        "Floor": 1,
+        "RoomNumber": "X102",
+        "Type": "Female"
+      },
+      {
+        "Building": "ICICS",
+        "Floor": 3,
+        "RoomNumber": "302",
+        "Type": "Accessibility"
+      },
+      {
+        "Building": "ICICS",
+        "Floor": 1,
+        "RoomNumber": "104",
+        "Type": "Female"
+      }
+    ]
+  }
+]

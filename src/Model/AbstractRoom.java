@@ -1,27 +1,20 @@
 package Model;
 
 public class AbstractRoom extends AbstractResource {
-    protected Building building;
-    protected int floor;
     protected String roomNumber;
 
 
-    public AbstractRoom (){
-        building = null;
-        floor = 0;
-        roomNumber = "";
-    }
-
-    public void setBuilding(Building building){
-        this.building = building;
-    }
-
-    public void setFloor (int floor){
-        this.floor = floor;
+    public AbstractRoom (Building building, Integer floor){
+        super(building, floor);
+        roomNumber = null;
     }
 
     public void setRoomNumber (String roomNumber){
         this.roomNumber = roomNumber;
+    }
+
+    public String getRoomNumber (){
+        return roomNumber;
     }
 
 }

@@ -1,0 +1,36 @@
+
+[
+  {
+    "RoomType": "StudyRoom",
+    "Rooms": [
+      {
+        "Building": "ICICS",
+        "Floor": 2,
+        "RoomNum": "211",
+        "Size": 2,
+        "Availability": true
+      },
+      {
+        "Building": "ICICS",
+        "Floor": 1,
+        "RoomNum": "X104",
+        "Size": 5,
+        "Availability": false
+      },
+      {
+        "Building": "ICICS",
+        "Floor": 2,
+        "RoomNum": "302",
+        "Size": 3,
+        "Availability": false
+      },
+      {
+        "Building": "ICICS",
+        "Floor": 2,
+        "RoomNum": "302",
+        "Size": 9,
+        "Availability": true
+      }
+    ]
+  }
+]

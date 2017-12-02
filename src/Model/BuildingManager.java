@@ -6,6 +6,7 @@ import java.util.Map;
 public class BuildingManager {
     private static BuildingManager instance = new BuildingManager();
 
+    private Building selected;
 
     private Map<String, Building > buildingMap;
 
@@ -56,6 +57,19 @@ public class BuildingManager {
     }
 
 
+    public void setSelected(Building building){
+        if(buildingMap.containsKey(building.getName())){
+            selected = building;
+        }
+    }
+
+    public void clearSelected(){
+        selected = null;
+    }
+
+    public Building getSelected(){
+        return selected;
+    }
 
 
 

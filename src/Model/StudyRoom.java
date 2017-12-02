@@ -2,27 +2,27 @@ package Model;
 
 public class StudyRoom extends AbstractRoom {
     private Integer size;
-    private Boolean booked;
+    private Boolean availability;
 
     public StudyRoom(Building building, int floor){
         super(building, floor);
         size = null;
-        booked = null;
+        availability = null;
     }
 
     public void setSize (Integer size){
         this.size = size;
     }
 
-    public void setBooked(Boolean booked){
-        this.booked = booked;
+    public void setAvailability(Boolean booked){
+        this.availability = booked;
     }
 
     public Integer getSize (){
         return size;
     }
 
-    public Boolean isBooked() {
-        return booked;
+    public Boolean isAvailable() {
+        return availability;
     }
 }

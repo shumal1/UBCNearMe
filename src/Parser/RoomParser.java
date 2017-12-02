@@ -3,7 +3,6 @@ package Parser;
 import Model.Building;
 import Model.StudyRoom;
 import Model.WashRoom;
-import com.oracle.javafx.jmx.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

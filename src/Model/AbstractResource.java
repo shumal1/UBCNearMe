@@ -1,4 +1,4 @@
 package Model;
 
-public abstract class AbstractResource implements IRoom {
+public abstract class AbstractResource implements IResource {
 }

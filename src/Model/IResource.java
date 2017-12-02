@@ -2,11 +2,12 @@ package Model;
 
 public interface IResource {
 
-    void setFloor();
+    void setFloor(int number);
 
-    void setBuilding();
+    void setBuilding(Building building);
 
-    Integer getFloor();
+    int getFloor();
 
     Building getBuilding();
+
 }

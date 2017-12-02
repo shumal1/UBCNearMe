@@ -1,15 +1,17 @@
 package Model;
 
-public abstract class AbstractResource implements IResource {
-    protected Integer floor;
+
+public abstract class AbstractResource implements IResource, Comparable<AbstractResource> {
+    protected int floor;
     protected Building building;
 
-    public AbstractResource(Building building, Integer floor){
+    public AbstractResource(Building building, int floor){
         this.floor = floor;
         this.building = building;
     }
 
-    public void setFloor(Integer floor){
+
+    public void setFloor(int floor){
         this.floor = floor;
     }
 
@@ -21,7 +23,12 @@ public abstract class AbstractResource implements IResource {
         return building;
     }
 
-    public Integer getFloor() {
+    public int getFloor() {
         return floor;
+    }
+
+
+    public int compareTo(AbstractResource resource) {
+        return this.getFloor() - resource.getFloor();
     }
 }

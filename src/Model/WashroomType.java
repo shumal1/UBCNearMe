@@ -1,16 +1,16 @@
 package Model;
 
-public enum WRType {
+public enum WashroomType {
     MALE("Male"),
     FEMALE("Female"),
     ACCESSIBILITY("Accessibility");
 
     private  String displayName;
-    WRType(String displayName) {this.displayName = displayName;}
+    WashroomType(String displayName) {this.displayName = displayName;}
 
     public String getDisplayName() {return displayName;}
 
-    public static WRType getType(String nm) {
+    public static WashroomType getType(String nm) {
         switch (nm) {
             case "Male":
                 return MALE;

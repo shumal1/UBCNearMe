@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class AbstractRoom extends AbstractResource {
+public abstract class AbstractRoom extends AbstractResource  {
     protected String roomNumber;
 
 
@@ -16,5 +16,7 @@ public abstract class AbstractRoom extends AbstractResource {
     public String getRoomNumber (){
         return roomNumber;
     }
+
+
 
 }

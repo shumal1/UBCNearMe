@@ -6,10 +6,10 @@ public class AbstractRoom extends AbstractResource {
     protected String roomNumber;
 
 
-    public AbstractRoom (){
-        building = null;
-        floor = 0;
-        roomNumber = "";
+    public AbstractRoom (Building building, int floor, String roomNumber){
+        this.building = building;
+        this.floor = floor;
+        this.roomNumber = roomNumber;
     }
 
     public void setBuilding(Building building){
@@ -23,5 +23,15 @@ public class AbstractRoom extends AbstractResource {
     public void setRoomNumber (String roomNumber){
         this.roomNumber = roomNumber;
     }
+
+    public int getFloor(){
+        return floor;
+    }
+
+    public String getRoomNumber (){
+        return roomNumber;
+    }
+
+    //TODO: get Building
 
 }

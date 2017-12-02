@@ -1,5 +1,8 @@
 package Parser;
 
+import Model.Building;
+import Model.StudyRoom;
+import Model.WashRoom;
 import com.oracle.javafx.jmx.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +23,7 @@ public class RoomParser {
                 String roomnum = room.getString("RoomNum");
                 int minpeople = room.getInt("Size");
                 Boolean availability = room.getBoolean("Availability");
-                // create new studyroom!!!!!!!
+                StudyRoom sr = new StudyRoom(building, floorNum);
             }
         }
     }
@@ -38,7 +41,7 @@ public class RoomParser {
                 int floorNum = room.getInt("Floor");
                 String roomnum = room.getString("RoomNum");
                 String gender = room.getString("Type");
-                // create new washroom!!!!!!!
+                //WashRoom wr = new WashRoom(building, floornum, roomnum);
             }
         }
     }
@@ -51,7 +54,7 @@ public class RoomParser {
             Double lat = cs.getDouble("Latitude");
             Double lon = cs.getDouble("Longitude");
             String hours = cs.getString("Hours");
-            // create new Building!!!!!!!!!
+            Building cs = new Building(hours,lat,lon,name);
         }
     }
 

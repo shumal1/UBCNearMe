@@ -4,8 +4,8 @@ public class StudyRoom extends AbstractRoom {
     private Integer size;
     private Boolean booked;
 
-    public StudyRoom(Building building, int floor, String roomNumber){
-        super(building, floor, roomNumber);
+    public StudyRoom(Building building, int floor){
+        super(building, floor);
         size = null;
         booked = null;
     }

@@ -5,7 +5,7 @@ public class WashRoom extends AbstractRoom {
     private Boolean accessible;
 
     public WashRoom(Building building, int floor, String roomNumber){
-        super(building, floor, roomNumber);
+        super(building, floor);
         wrType = null;
         accessible = null;
     }

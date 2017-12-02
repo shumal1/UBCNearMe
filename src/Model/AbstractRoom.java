@@ -1,6 +1,6 @@
 package Model;
 
-public class AbstractRoom extends AbstractResource {
+public abstract class AbstractRoom extends AbstractResource {
     protected String roomNumber;
 
 

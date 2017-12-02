@@ -3,6 +3,8 @@ package Parser;
 import Model.Building;
 import Model.StudyRoom;
 import Model.WashRoom;
+=======
+import Model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,7 +24,11 @@ public class RoomParser {
                 String roomnum = room.getString("RoomNum");
                 int minpeople = room.getInt("Size");
                 Boolean availability = room.getBoolean("Availability");
-                StudyRoom sr = new StudyRoom(building, floorNum);
+                StudyRoom sr = new StudyRoom(BuildingManager.getInstance().getBuildingWithName(building), floorNum);
+                sr.setSize(minpeople);
+                sr.setRoomNumber(roomnum);
+                sr.setAvailability(availability);
+                BuildingManager.getInstance().getBuildingWithName(building).addResource(sr);
             }
         }
     }
@@ -40,7 +46,10 @@ public class RoomParser {
                 int floorNum = room.getInt("Floor");
                 String roomnum = room.getString("RoomNum");
                 String gender = room.getString("Type");
-                //WashRoom wr = new WashRoom(building, floornum, roomnum);
+                WashRoom wr = new WashRoom(BuildingManager.getInstance().getBuildingWithName(building), floorNum, roomnum);
+                WRType ws = WRType.getType(gender);
+                wr.setWrType(ws);
+                BuildingManager.getInstance().getBuildingWithName(building).addResource(wr);
             }
         }
     }
@@ -53,7 +62,7 @@ public class RoomParser {
             Double lat = cs.getDouble("Latitude");
             Double lon = cs.getDouble("Longitude");
             String hours = cs.getString("Hours");
-            Building cs = new Building(hours,lat,lon,name);
+            Building bi = new Building(hours,lat,lon,name);
         }
     }
 

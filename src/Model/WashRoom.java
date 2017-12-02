@@ -2,24 +2,17 @@ package Model;
 
 public class WashRoom extends AbstractRoom {
     private WRType wrType;
-    private Boolean accessible;
+    private String roomnum;
 
     public WashRoom(Building building, int floor, String roomNumber){
         super(building, floor);
         wrType = null;
-        accessible = null;
+        this.roomnum = roomNumber;
+
     }
 
     public void setWrType(WRType wrType){
         this.wrType = wrType;
-    }
-
-    public void setAccessible(Boolean accessible){
-        this.accessible = accessible;
-    }
-
-    public Boolean isAccessible() {
-        return accessible;
     }
 
     public WRType getWrType() {

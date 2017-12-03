@@ -26,7 +26,6 @@ public class RoomParser {
 
     }
 
-
     public static void parseStudyRooms(JSONArray studyRooms) throws org.json.JSONException {
 
         for (int i = 0; i < studyRooms.length(); i++) {

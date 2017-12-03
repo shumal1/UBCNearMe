@@ -74,7 +74,6 @@ public class BuildingManager implements Iterable<Building> {
     }
 
     public Building getSelected(){
-        selected = getBuildingWithName("ICICS");
        return selected;
     }
 

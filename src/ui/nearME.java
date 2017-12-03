@@ -1,10 +1,8 @@
 package ui;
 
 
-import Model.BuildingManager;
+import Model.*;
 
-import Model.StudyRoom;
-import Model.WashRoom;
 import Parser.BuildingParser;
 import Parser.RoomParser;
 import com.teamdev.jxmaps.*;
@@ -116,38 +114,47 @@ public class nearME extends Application{
     }
 
     public void setMarker(){
-        Marker marker = new Marker(mapView.getMap());
+        for (Building building : bm) {
+            Marker marker = new Marker(mapView.getMap());
 
-        Symbol symbol = new Symbol();
-        symbol.setFillColor("Red");
+            Symbol symbol = new Symbol();
+            symbol.setFillColor("Red");
 
-        marker.setPosition(new LatLng(49.261178, -123.248804));
-        marker.setIcon(symbol);
+            marker.setPosition(new LatLng(building.getLat(), building.getLon()));
+            marker.setIcon(symbol);
 
-        marker.setClickable(true);
-        marker.dispose();
+            marker.setTitle(building.getName());
+            marker.setClickable(true);
+            marker.dispose();
 
-        marker.addEventListener("click", new MapMouseEvent() {
-            @Override
-            public void onEvent(MouseEvent mouseEvent) {
-                InfoWindow infoWindow = new InfoWindow(mapView.getMap());
-                String studyRoomNames = "Study Rooms" + "\n";
-                String washRoomNames = "Wash Rooms" + "\n";
+            marker.addEventListener("click", new MapMouseEvent() {
+                @Override
+                public void onEvent(MouseEvent mouseEvent) {
+                    LatLng latLng = new LatLng(building.getLat(), building.getLon());
+                    bm.setSelected(bm.getBuildingWithName(marker.getTitle()));
+                    mapView.getMap().setCenter(latLng );
+                    InfoWindow infoWindow = new InfoWindow(mapView.getMap());
+                    String studyRoomNames = "Study Rooms: " + "\n";
+                    String washRoomNames = "WashRooms: " + "\n";
 
-                for(StudyRoom studyRooms: bm.getSelected().getStudyRooms()){
-                    studyRoomNames = studyRoomNames + studyRooms.getRoomNumber() + "\n";
+                    for(StudyRoom studyRoom: bm.getSelected().getStudyRooms()){
+                        studyRoomNames = studyRoomNames + studyRoom.getRoomNumber() + "\t"+
+                                (studyRoom.isAvailable()? "Available," : "Unavailable,")  + "\n";
+                    }
+
+                    for(WashRoom washRoom: bm.getSelected().getWashRooms()){
+                        washRoomNames = washRoomNames + washRoom.getRoomNumber() + (washRoom.isAccessible()? " Accessible ," : "") + "\n";
+                    }
+
+
+                    infoWindow.setContent(studyRoomNames + washRoomNames);
+                    infoWindow.setPosition(latLng);
+                    infoWindow.open(mapView.getMap());
                 }
-
-                for(WashRoom washRoom: bm.getSelected().getWashRooms()){
-                    washRoomNames = washRoomNames + washRoom.getRoomNumber() + "\n";
-                }
+            });
+        }
 
 
-                infoWindow.setContent(studyRoomNames + washRoomNames);
-                infoWindow.setPosition(new LatLng(49.261178, -123.248804));
-                infoWindow.open(mapView.getMap());
-            }
-        });
     }
 
     private void parseBuildings() {

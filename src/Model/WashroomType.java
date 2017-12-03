@@ -3,7 +3,7 @@ package Model;
 public enum WashroomType {
     MALE("Male"),
     FEMALE("Female"),
-    ACCESSIBILITY("Accessibility");
+    ACCESSIBLE("Accessible");
 
     private  String displayName;
     WashroomType(String displayName) {this.displayName = displayName;}
@@ -16,8 +16,8 @@ public enum WashroomType {
                 return MALE;
             case "Female":
                 return FEMALE;
-            case "Accessibility":
-                return ACCESSIBILITY;
+            case "Accessible":
+                return ACCESSIBLE;
         }return null;
     }
 }

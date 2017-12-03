@@ -18,5 +18,8 @@ public class WashRoom extends AbstractRoom {
         return washroomType;
     }
 
+    public boolean isAccessible(){
+        return washroomType.equals(WashroomType.ACCESSIBLE);
+    }
 
 }

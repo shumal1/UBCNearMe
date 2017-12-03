@@ -1,9 +1,13 @@
 package Model;
 
+import Parser.BuildingParser;
+
+import javax.xml.crypto.Data;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-public class BuildingManager {
+public class BuildingManager implements Iterable<Building> {
     private static BuildingManager instance = new BuildingManager();
 
     private Building selected;
@@ -72,9 +76,8 @@ public class BuildingManager {
     }
 
 
-
-
-
-
-
+    @Override
+    public Iterator<Building> iterator() {
+        return buildingMap.values().iterator();
+    }
 }

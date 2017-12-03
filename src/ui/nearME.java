@@ -1,24 +1,23 @@
 package ui;
 
-import com.teamdev.jxmaps.ControlPosition;
-import com.teamdev.jxmaps.LatLng;
-import com.teamdev.jxmaps.Map;
-import com.teamdev.jxmaps.MapOptions;
-import com.teamdev.jxmaps.MapReadyHandler;
-import com.teamdev.jxmaps.MapStatus;
-import com.teamdev.jxmaps.MapTypeControlOptions;
+
+
+import Parser.BuildingParser;
+import com.teamdev.jxmaps.*;
 import com.teamdev.jxmaps.javafx.MapView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.json.JSONException;
 
 
 public class nearME extends Application{
+    // Creation of a JavaFX map view
+    final static MapView mapView = new MapView();
+
     @Override
-    public void start(final Stage primaryStage) {
-        // Creation of a JavaFX map view
-        final MapView mapView = new MapView();
+    public void start(final Stage primaryStage) throws JSONException {
 
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
@@ -43,13 +42,44 @@ public class nearME extends Application{
                     map.setCenter(new LatLng(49.261178, -123.248804));
                     // Setting initial zoom value
                     map.setZoom(17.0);
+                    setMarker();
                 }
             }
-        });
+        }
+        );
 
         Scene scene = new Scene(new BorderPane(mapView), 700, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
+
+    }
+
+    public void setMarker(){
+        Marker marker = new Marker(mapView.getMap());
+
+        Symbol symbol = new Symbol();
+        symbol.setFillColor("Red");
+
+        marker.setPosition(new LatLng(49.261178, -123.248804));
+        marker.setIcon(symbol);
+
+        marker.setClickable(true);
+        marker.dispose();
+
+        marker.addEventListener("click", new MapMouseEvent() {
+            @Override
+            public void onEvent(MouseEvent mouseEvent) {
+                InfoWindow infoWindow = new InfoWindow(mapView.getMap());
+                String studyRoomNames = "Study Rooms";
+
+                infoWindow.setContent(studyRoomNames);
+
+                infoWindow.setPosition(new LatLng(49.261178, -123.248804));
+                infoWindow.open(mapView.getMap());
+            }
+        });
     }
 
     public static void main(String[] args) {

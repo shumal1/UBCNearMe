@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class BuildingManager implements Iterable<Building> {
-    private static BuildingManager instance = new BuildingManager();
+    private static BuildingManager instance = BuildingManager.getInstance();
 
     private Building selected;
 
@@ -26,6 +26,7 @@ public class BuildingManager implements Iterable<Building> {
     public static BuildingManager getInstance() {
         if(instance == null){
             instance = new BuildingManager();
+
         }
         return instance;
     }
@@ -72,7 +73,8 @@ public class BuildingManager implements Iterable<Building> {
     }
 
     public Building getSelected(){
-        return selected;
+        selected = getBuildingWithName("ICICS");
+       return selected;
     }
 
 

@@ -33,7 +33,7 @@ public class RoomParser {
 
             String building = studyRoom.getString("Building");
             int floorNum = studyRoom.getInt("Floor");
-            String roomNum = studyRoom.getString("RoomNum");
+            String roomNum = studyRoom.getString("RoomNumber");
             int size = studyRoom.getInt("Size");
             Boolean availability = studyRoom.getBoolean("Availability");
             StudyRoom sr = new StudyRoom(BuildingManager.getInstance().getBuildingWithName(building), floorNum);
@@ -52,7 +52,7 @@ public class RoomParser {
 
             String building = washRoom.getString("Building");
             int floorNum = washRoom.getInt("Floor");
-            String roomNum = washRoom.getString("RoomNum");
+            String roomNum = washRoom.getString("RoomNumber");
             String gender = washRoom.getString("Type");
             WashRoom wr = new WashRoom(BuildingManager.getInstance().getBuildingWithName(building), floorNum, roomNum);
             WashroomType ws = WashroomType.getType(gender);

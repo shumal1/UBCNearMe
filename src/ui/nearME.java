@@ -3,7 +3,10 @@ package ui;
 
 import Model.BuildingManager;
 
+import Model.StudyRoom;
+import Model.WashRoom;
 import Parser.BuildingParser;
+import Parser.RoomParser;
 import com.teamdev.jxmaps.*;
 import com.teamdev.jxmaps.javafx.MapView;
 import javafx.application.Application;
@@ -29,18 +32,22 @@ public class nearME extends Application{
 
     final static MapView mapView = new MapView();
 
-    @Override
-    public void start(final Stage primaryStage) throws JSONException {
+
 
     private BorderPane border;
     private VBox selectionPanel;
 
-    private static final String DATA_SOURCE = "./data/BuildingResource";
+    private static final String BUILDING_SOURCE = "./data/BuildingResource.json";
+    private static final String STUDYROOM_SOURCE = "./data/StudyRoomResources.json";
+    private static final String WASHROOM_SOURCE = "./data/WashroomResources.json";
+
+
     private BuildingManager bm = BuildingManager.getInstance();
 
     @Override
     public void start(final Stage primaryStage) {
-        parseResources();
+        parseBuildings();
+        parseRooms();
 
         border = new BorderPane();
         selectionPanel = new VBox();
@@ -124,22 +131,53 @@ public class nearME extends Application{
             @Override
             public void onEvent(MouseEvent mouseEvent) {
                 InfoWindow infoWindow = new InfoWindow(mapView.getMap());
-                String studyRoomNames = "Study Rooms";
+                String studyRoomNames = "Study Rooms" + "\n";
+                String washRoomNames = "Wash Rooms" + "\n";
 
-                infoWindow.setContent(studyRoomNames);
+                for(StudyRoom studyRooms: bm.getSelected().getStudyRooms()){
+                    studyRoomNames = studyRoomNames + studyRooms.getRoomNumber() + "\n";
+                }
 
+                for(WashRoom washRoom: bm.getSelected().getWashRooms()){
+                    washRoomNames = washRoomNames + washRoom.getRoomNumber() + "\n";
+                }
+
+
+                infoWindow.setContent(studyRoomNames + washRoomNames);
                 infoWindow.setPosition(new LatLng(49.261178, -123.248804));
                 infoWindow.open(mapView.getMap());
             }
         });
     }
 
-    private void parseResources() {
+    private void parseBuildings() {
         try {
-            InputStream is = new FileInputStream(DATA_SOURCE);
+            InputStream is = new FileInputStream(BUILDING_SOURCE);
             String jsonData = readSource(is);
+            jsonData.trim();
             BuildingParser bp = new BuildingParser();
             bp.parseBuilding(jsonData);
+        } catch (IOException e) {
+            System.out.println("Error reading file...");
+            e.printStackTrace();
+        } catch (JSONException e) {
+            System.out.println("Error parsing JSON data");
+            e.printStackTrace();
+        }
+    }
+
+    private void parseRooms() {
+        try {
+            InputStream is = new FileInputStream(STUDYROOM_SOURCE);
+            String jsonData = readSource(is);
+            RoomParser bp = new RoomParser();
+            bp.parse(jsonData);
+
+             is = new FileInputStream(WASHROOM_SOURCE);
+             jsonData = readSource(is);
+             bp = new RoomParser();
+            bp.parse(jsonData);
+
         } catch (IOException e) {
             System.out.println("Error reading file...");
             e.printStackTrace();

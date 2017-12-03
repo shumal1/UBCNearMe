@@ -67,6 +67,7 @@ public class BuildingManager implements Iterable<Building> {
         }
     }
 
+
     public void clearSelected(){
         selected = null;
     }

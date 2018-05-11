@@ -1,0 +1,11 @@
+This is a model developed during UBC Local Hacks by Judy Z., Shizuko A., Yun L., and Amber Z.
+========  
+This project features an interactive panel, implemented using JFrame that allows the user to view buildings at UBC and the resources it contains. 
+The data are loaded using JSON files and associated parsers, and are then plotted onto the mapview for users to see. 
+
+===
+
+Todo:
+-Add a search bar in the frame
+-Add a filter in the frame 
+
